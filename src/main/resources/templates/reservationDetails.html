@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation Details</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background-color: #f4f4f4; }
+        .box { background: #fff; padding: 20px; border-radius: 8px; max-width: 700px; margin: auto; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #28a745; }
+        .section { margin-top: 20px; }
+        .label { font-weight: bold; }
+        button { margin-top: 20px; background: #dc3545; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1>Reservation Details</h1>
+    <div class="section">
+        <p><span class="label">Name:</span> <span th:text="${customer.firstName + ' ' + customer.lastName}"></span></p>
+        <p><span class="label">Phone:</span> <span th:text="${customer.contactNo}"></span></p>
+        <p><span class="label">Status:</span> <span th:text="${customer.reservation.status}"></span></p>
+        <p><span class="label">Flight No:</span> <span th:text="${customer.reservation.ticket.flightNumber}"></span></p>
+        <p><span class="label">From:</span> <span th:text="${customer.reservation.ticket.departureAirport}"></span></p>
+        <p><span class="label">To:</span> <span th:text="${customer.reservation.ticket.arrivalAirport}"></span></p>
+        <p><span class="label">Seat Class:</span> <span th:text="${customer.reservation.ticket.seatClass}"></span></p>
+        <p><span class="label">Seat No:</span> <span th:text="${customer.reservation.ticket.seatNumber}"></span></p>
+        <p><span class="label">Price:</span> $<span th:text="${customer.reservation.ticket.price}"></span></p>
+    </div>
+    <div class="button-row">
+        <form th:action="@{'/reservation/cancel/' + ${customer.id}}" method="post">
+            <button type="submit" class="cancel-btn">Cancel Reservation</button>
+        </form>
+        <a th:href="@{/reservation}" class="new-btn">Make Another Reservation</a>
+    </div>
+</div>
+</body>
+</html>

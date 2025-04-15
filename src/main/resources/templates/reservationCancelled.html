@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation Cancelled</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background-color: #fdf0f0; }
+        .box { background: white; padding: 30px; max-width: 700px; margin: auto; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #dc3545; }
+        .label { font-weight: bold; }
+        a { display: inline-block; margin-top: 30px; padding: 10px 20px; background: #007bff; color: white; border-radius: 5px; text-decoration: none; }
+    </style>
+</head>
+<body>
+<div class="box">
+    <h1>Your Reservation Has Been Cancelled</h1>
+    <p><span class="label">Name:</span> <span th:text="${customer.firstName + ' ' + customer.lastName}"></span></p>
+    <p><span class="label">Reservation Status:</span> <span th:text="${customer.reservation.status}"></span></p>
+    <p><span class="label">Flight No:</span> <span th:text="${customer.reservation.ticket.flightNumber}"></span></p>
+    <p><span class="label">From:</span> <span th:text="${customer.reservation.ticket.departureAirport}"></span></p>
+    <p><span class="label">To:</span> <span th:text="${customer.reservation.ticket.arrivalAirport}"></span></p>
+    <a th:href="@{/reservation}">Make a New Booking</a>
+</div>
+</body>
+</html>
